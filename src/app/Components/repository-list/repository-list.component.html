@@ -9,13 +9,13 @@
 </div>
 
 <ng-template #loadedContent>
-  <div class="grid grid-cols-2 p-4 gap-3 ">
+  <div class="grid grid-cols-2 p-4 gap-3 mx-36 ">
     <div  class="border-[1px] rounded-md border-grey-200 p-4 bg-white h-full overflow-hidden break-words" *ngFor="let repo of displayedRepositories">
       <h3 class="text-blue-500">{{ repo.name }}</h3>
       <p class="text-gray-600 truncate ">{{ repo.description }}</p>
-      <div class="px-4 py-2 "> 
-        <div *ngFor="let topic of repo.topics">
-          <span class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2">topic</span>
+      <div class="px-4 py-2 flex "> 
+        <div *ngFor="let topic of repo.topics" >
+          <span class="inline-block bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">{{topic}}</span>
         </div>
       </div>
     </div>
