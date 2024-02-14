@@ -120,9 +120,9 @@ Definitely yes, I'm Available for the next 6 Months to join as well as for full-
 Javascript, TypeScript, MERN, Git, Java
 
 ## 
-👩‍💻 I'm currently working on MERN, typescript and NextJs
-🧠 I'm currently learning Typescript
-📫 How to reach me...-> https://www.linkedin.com/in/bhartipatel2503/
+>👩‍💻 I'm currently working on MERN, typescript and NextJs
+>🧠 I'm currently learning Typescript
+>📫 How to reach me DM(https://www.linkedin.com/in/bhartipatel2503/)
 
 
 ## Feedback
