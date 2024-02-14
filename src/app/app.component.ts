@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
 
   onSearch(username: string){
     this.loading = true;
-    console.log(username)
+    // console.log(username)
     this.apiService.getUser(username).subscribe({
       next: (user) => {
         this.userData = user;
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
     this.apiService.getUserRepos(username, 1, 1000).subscribe({
       next: (repos) => {
         this.repositories = repos;
-        console.log(repos)
+        // console.log(repos)
       },
       error: () => {
         this.repositories = [];
