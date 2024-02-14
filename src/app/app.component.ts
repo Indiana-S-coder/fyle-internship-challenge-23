@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
 
 @Component({
@@ -6,7 +6,9 @@ import { ApiService } from './services/api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+
+export class AppComponent implements OnInit{
+  title: string = 'fyle-frontend-challenge';
   userData: any; 
   repositories: any[] = []
   loading: boolean = false;
@@ -15,7 +17,6 @@ export class AppComponent{
   constructor(
     private apiService: ApiService,
   ) {}
-
 
   onSearch(username: string){
     this.loading = true;
@@ -50,5 +51,9 @@ export class AppComponent{
     }
     );
     
+  }
+
+  ngOnInit(): void {
+     
   }
 }

@@ -6,7 +6,6 @@ import { HttpClientModule } from  '@angular/common/http';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { RepositoryListComponent } from './Components/repository-list/repository-list.component';
 import { UserDataComponent } from './Components/user-data/user-data.component';
-import { PaginationComponent } from './Components/pagination/pagination.component';
 import { UserDataSkeletonComponent } from './Components/user-data-skeleton/user-data-skeleton.component';
 import { RepoListSkeletonComponent } from './Components/repo-list-skeleton/repo-list-skeleton.component';
 
@@ -16,7 +15,6 @@ import { RepoListSkeletonComponent } from './Components/repo-list-skeleton/repo-
     SearchBarComponent,
     RepositoryListComponent,
     UserDataComponent,
-    PaginationComponent,
     UserDataSkeletonComponent,
     RepoListSkeletonComponent
   ],
