@@ -1,5 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+// components/search-bar/search-bar.component.ts
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { debounceTime, distinctUntilChanged, switchMap, catchError, map } from 'rxjs/operators';
+import { Subject, Observable, of } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,20 +11,21 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
-  username: string = ''; // declare username property
-  @Output() searchUser = new EventEmitter<string>();
+  @Output() searchUsername = new EventEmitter<string>();
+  searchForm: FormGroup;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private fb: FormBuilder) {
+    this.searchForm = this.fb.group({
+      username: [''],
+    })
+   }
 
-  onSearch() {
-    this.apiService.getUser(this.username).subscribe({
-      next: (user: any) => {
-        console.log('User Details:', user);
-        // Pass user details to parent or repository-list component
-      },
-      error: (error) => {
-        console.error('Error fetching user:', error);
-      }
-  });
+
+  searchUser() {
+    const username = this.searchForm.value.username;
+    if(username){
+      this.searchUsername.emit(username);
+    }
+  }
 }
-}
+
