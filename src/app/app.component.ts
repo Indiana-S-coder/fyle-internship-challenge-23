@@ -6,12 +6,54 @@ import { ApiService } from './services/api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit{
+  title: string = 'fyle-frontend-challenge';
+  userData: any; 
+  repositories: any[] = []
+  loading: boolean = false;
+  error: boolean = false;
+
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
   ) {}
 
-  ngOnInit() {
-    this.apiService.getUser('johnpapa').subscribe(console.log);
+  onSearch(username: string){
+    this.loading = true;
+    // console.log(username)
+    this.apiService.getUser(username).subscribe({
+      next: (user) => {
+        this.userData = user;
+        console.log(user)
+      },
+      error: () => {
+        this.userData = null;
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
+      }
+    });
+
+
+    this.apiService.getUserRepos(username, 1, 1000).subscribe({
+      next: (repos) => {
+        this.repositories = repos;
+        // console.log(repos)
+      },
+      error: () => {
+        this.repositories = [];
+        this.error = true;
+      },
+      complete: () => {
+        this.loading = false;
+      }
+    }
+    );
+    
+  }
+
+  ngOnInit(): void {
+     
   }
 }

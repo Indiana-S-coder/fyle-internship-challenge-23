@@ -1,0 +1,65 @@
+<div *ngIf="repositories && !error">
+  <div *ngIf="repositories.length > 0 then repolist else noData">
+  </div>
+</div>
+
+<ng-template #repolist>
+  <div *ngIf="loading; else loadedContent">
+    <app-repo-list-skeleton [repos]="repositories" ></app-repo-list-skeleton>
+</div>
+
+<ng-template #loadedContent>
+  <div class="grid grid-cols-2 p-4 gap-3 mx-36 ">
+    <div  class="border-[1px] rounded-md border-grey-200 p-4 bg-white h-full overflow-hidden break-words" *ngFor="let repo of displayedRepositories">
+      <h3 class="text-blue-500">{{ repo.name }}</h3>
+      <p class="text-gray-600 truncate ">{{ repo.description }}</p>
+      <div class="px-4 py-2 flex "> 
+        <div *ngFor="let topic of repo.topics" >
+          <span class="inline-block bg-blue-500 rounded-md px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">{{topic}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+  <div *ngIf="loading" class="flex justify-center items-center h-full">Loading...</div>
+  <div *ngIf="error" class="flex justify-center items-center h-full">Error loading repositories</div>
+  
+  <!-- Pagination -->
+  <div class="flex justify-center gap-2 items-center mt-4">
+    <div class="flex items-center space-x-2">
+      <label for="pageSize" class="text-sm">Page Size:</label>
+      <select id="pageSize" [(ngModel)]="itemsPerPage" (change)="onPageSizeChange($event)" class="px-2 py-1 border rounded">
+        <option *ngFor="let size of [10, 25, 50, 100]">{{ size }}</option>
+      </select>
+    </div>
+
+    <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-base py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue"
+    (click)="previousPage()">
+    &lt; Previous
+  </button>
+  
+  <div class="flex space-x-2">
+    <div *ngFor="let page of pages" 
+      class="px-4 py-2 rounded cursor-pointer hover:bg-blue-300"
+      [ngClass]="{'bg-blue-500': page === currentPage, 'bg-white': page !== currentPage}"
+      (click)="goToPage(page)">
+      {{ page }}
+    </div>
+  </div>
+
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-base py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue"
+      (click)="nextPage()">
+      Next &gt;
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #noData>
+  <div class="flex justify-center items-center h-full">
+      
+  </div>
+</ng-template>
+
+
