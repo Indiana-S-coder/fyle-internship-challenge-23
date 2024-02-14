@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class UserDataComponent {
   @Input() user: any;
   @Input() error: boolean = false;
+  @Input() loading: boolean = false;
 }

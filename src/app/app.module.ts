@@ -8,6 +8,8 @@ import { SearchBarComponent } from './Components/search-bar/search-bar.component
 import { RepositoryListComponent } from './Components/repository-list/repository-list.component';
 import { UserDataComponent } from './Components/user-data/user-data.component';
 import { PaginationComponent } from './Components/pagination/pagination.component';
+import { UserDataSkeletonComponent } from './user-data-skeleton/user-data-skeleton.component';
+import { RepoListSkeletonComponent } from './repo-list-skeleton/repo-list-skeleton.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,9 @@ const routes: Routes = [
     SearchBarComponent,
     RepositoryListComponent,
     UserDataComponent,
-    PaginationComponent
+    PaginationComponent,
+    UserDataSkeletonComponent,
+    RepoListSkeletonComponent
   ],
   imports: [
     BrowserModule,

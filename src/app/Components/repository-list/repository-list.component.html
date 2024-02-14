@@ -4,6 +4,11 @@
 </div>
 
 <ng-template #repolist>
+  <div *ngIf="loading; else loadedContent">
+    <app-repo-list-skeleton [repos]="repositories" ></app-repo-list-skeleton>
+</div>
+
+<ng-template #loadedContent>
   <div class="grid grid-cols-2 p-4 gap-3 ">
     <div  class="border-[1px] rounded-md border-grey-200 p-4 bg-white h-full overflow-hidden break-words" *ngFor="let repo of displayedRepositories">
       <h3 class="text-blue-500">{{ repo.name }}</h3>
@@ -15,7 +20,7 @@
       </div>
     </div>
   </div>
-  
+</ng-template>
   <div *ngIf="loading" class="flex justify-center items-center h-full">Loading...</div>
   <div *ngIf="error" class="flex justify-center items-center h-full">Error loading repositories</div>
   
