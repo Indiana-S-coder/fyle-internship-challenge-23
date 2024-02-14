@@ -1,4 +1,6 @@
 <div class=" w-screen ">
   <app-search-bar (searchUsername)="onSearch($event)"></app-search-bar>
   <app-user-data [user]="userData"></app-user-data>
+  <app-repository-list [repositories]="repositories"
+  ></app-repository-list>
 </div>

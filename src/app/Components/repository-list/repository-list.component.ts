@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-repository-list',
@@ -7,23 +6,26 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./repository-list.component.scss']
 })
 export class RepositoryListComponent {
-  @Input() user: any; // Input user details from parent component
+  @Input() repositories: any[] = []; // Input user details from parent component
+  totalRepos: number = 0;
+  currentPage: number = 1;
+  pageSize: number = 10;
+  totalPages: number = 1; 
 
-  constructor(private apiService: ApiService) {}
-
-
-  ngOnInit(): void {
+  constructor() {}
+ 
+  get displayedRepos(): any[] {
+    const startIndex = (this.currentPage - 1)* this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.totalPages);
+    return this.repositories.slice(startIndex, endIndex);
   }
 
-  loadRepositories() {
-    this.apiService.getRepos(this.user.login, 1, 10).subscribe(
-      (repos: any[]) => {
-        console.log('Repositories:', repos);
-        // Display repositories
-      },
-      (error) => {
-        console.error('Error fetching repositories:', error);
-      }
-    );
-  }
+ onPageChange(page: number){
+  this.currentPage = page;
+  
+ }
+  // ngOnInit(): void {
+  // }
+
+  
 }

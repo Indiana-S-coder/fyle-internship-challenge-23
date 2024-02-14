@@ -6,6 +6,7 @@ import { HttpClientModule } from  '@angular/common/http';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { RepositoryListComponent } from './Components/repository-list/repository-list.component';
 import { UserDataComponent } from './Components/user-data/user-data.component';
+import { PaginationComponent } from './Components/pagination/pagination.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { UserDataComponent } from './Components/user-data/user-data.component';
     AppComponent,
     SearchBarComponent,
     RepositoryListComponent,
-    UserDataComponent
+    UserDataComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
