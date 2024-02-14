@@ -1,43 +1,130 @@
-# Fyle Frontend Challenge
 
-## Who is this for?
+# Github Repositories listing page
 
-This challenge is meant for candidates who wish to intern at Fyle and work with our engineering team. The candidate should be able to commit to at least 6 months of dedicated time for internship.
+Angular 17 single-page application (SPA) that takes a GitHub username as input and displays the public GitHub repositories belonging to the user.
 
-## Why work at Fyle?
 
-Fyle is a fast-growing Expense Management SaaS product. We are ~40 strong engineering team at the moment. 
+## Tech Stack
 
-We are an extremely transparent organization. Check out our [careers page](https://careers.fylehq.com) that will give you a glimpse of what it is like to work at Fyle. Also, check out our Glassdoor reviews [here](https://www.glassdoor.co.in/Reviews/Fyle-Reviews-E1723235.htm). You can read stories from our teammates [here](https://stories.fylehq.com).
+**Client:** Angular, TypeScript, TailwindCSS
 
-## Challenge outline
 
-This challenge involves implementing application using github api. 
+## Deployment
 
-The services that you need to use are already implemented - check out ApiService.
+See Deployed Site
 
-You can see details of this challenge [here](https://fyleuniverse.notion.site/fyleuniverse/Fyle-Frontend-development-challenge-cb5085e5e0864e769e7b98c694400aaa)
+  [0Link]()
 
-__Note__ - This challenge is in angular. We work on angular frameworks & after you join we expect the same from you. Hence it is required to complete this assignement in angular itself.
+## API Reference
 
-## What happens next?
+#### Get all Repos
 
-You will hear back within 48 hours from us via email.
+```http
+  GET /api.github.com/users/${username}/Repos
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `username` | `string` | **GitHub**. username |
+
+Takes username and get the Github public repository of the user
+
+#### Get User Profile
+
+```http
+  GET /api.github.com/users/${username}
+
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username`      | `string` | **GitHub**. username |
+
+#### 
+Takes username and get the user Github Profile
+
+
+## Environment Variables
+
+To run this project, you do not need any environment variables
+
+
 
 ## Installation
 
-1. Fork this repository to your github account.
-2. Clone the forked repository and proceed with steps mentioned below.
+Install  with npm
 
-### Install requirements
-* Install angular cli [Ref](https://angular.io/cli)
-* `npm install` in this repository 
+```bash
+  npm install 
+  npm install @angular/cli
+```
+    
+## Run Locally
 
-## Development server
+Clone the project
 
-Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+```bash
+  git clone https://github.com/Indiana-S-coder/fyle-internship-challenge-23.git
+```
 
-## Further help
+Go to the project directory
 
-Visit the [Angular Documentation](https://angular.io/guide/styleguide) to learn more.
-Styling is to be strictly done with [Tailwind](https://tailwindcss.com/docs/installation).
+```bash
+  cd fyle-internship-challenge-23
+```
+
+Install dependencies
+
+```bash
+  npm install
+  npm install @angular/cli
+```
+
+Start the server
+
+```bash
+  ng serve
+```
+
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  ng test
+```
+Above command will execute the following
+  -> ApiService test
+  -> Repository-list Component tests
+
+
+## Author
+- [@Atmalviya1](https://github.com/Indiana-S-coder)
+
+
+
+## 🚀 About Me
+
+# Hey! I'm Bharti Patel 
+A Web developer and final year Electronics & Telecommunication Engineering graduate from IET-DAVV, Indore. Currently, I'm currently looking for internship and full-time opportunities where I can learn and upskill. I am SIH2023 finalist. Apart from coding, I like playing badminton, cooking(it's science for me to experiment with ingredients), and Arts & crafts. Let's connect and code together! 🚀
+
+Reach me at [email](mailto:bhartipatel2503@gmail.com) or find me on [LinkedIn](https://www.linkedin.com/in/bhartipatel2503/).
+
+
+## FAQ
+
+#### Question :-  Are you availabe for full-time internship for 6 months ?
+Definitely yes, I'm Available for the next 6 Months to join as well as for full-time role.
+
+
+## 🛠 Skills
+Javascript, TypeScript, MERN, Git, Java
+
+## 
+👩‍💻 I'm currently working on MERN, typescript and NextJs
+🧠 I'm currently learning Typescript
+📫 How to reach me...-> https://www.linkedin.com/in/bhartipatel2503/
+
+
+## Feedback
+
+If you have any feedback, please reach out to me at bhartipatel2503@gmail.com
