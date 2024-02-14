@@ -98,7 +98,7 @@ Above command will execute the following
 
 
 ## Author
-- [@Atmalviya1](https://github.com/Indiana-S-coder)
+- [@BhartiPatel](https://github.com/Indiana-S-coder)
 
 
 
