@@ -13,13 +13,13 @@ Angular 17 single-page application (SPA) that takes a GitHub username as input a
 
 See Deployed Site
 
-  [0Link]()
+  [Link]()
 
 ## API Reference
 
 #### Get all Repos
 
-```http
+```
   GET /api.github.com/users/${username}/Repos
 ```
 | Parameter | Type     | Description                |
@@ -30,7 +30,7 @@ Takes username and get the Github public repository of the user
 
 #### Get User Profile
 
-```http
+```
   GET /api.github.com/users/${username}
 
 ```
