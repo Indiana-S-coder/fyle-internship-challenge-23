@@ -74,9 +74,9 @@ describe('RepositoryListComponent', () => {
   });
 
   it('should go to specific page', () => {
-    component.goToPage(3);
-    console.log('currentPage after goToPage:', component.currentPage);
-    expect(component.currentPage).toBe(3);
+    component.repositories = new Array(25); 
+    component.goToPage(2);
+    expect(component.currentPage).toBe(2);
   });
 });
 

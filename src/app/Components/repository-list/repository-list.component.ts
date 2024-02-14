@@ -63,12 +63,8 @@ export class RepositoryListComponent implements OnChanges{
   }
 
   goToPage(page: number) {
-    
-  console.log('totalPages:', this.totalPages);
-  console.log('page:', page);
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      console.log('Current page:', this.currentPage);
     }
   }
 
