@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from  '@angular/common/http';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
@@ -8,6 +9,15 @@ import { RepositoryListComponent } from './Components/repository-list/repository
 import { UserDataComponent } from './Components/user-data/user-data.component';
 import { PaginationComponent } from './Components/pagination/pagination.component';
 
+const routes: Routes = [
+  {
+    path: '', component: SearchBarComponent
+  },
+  {
+    path: 'user/:username', component: UserDataComponent
+  }
+
+]
 
 @NgModule({
   declarations: [
@@ -20,7 +30,9 @@ import { PaginationComponent } from './Components/pagination/pagination.componen
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

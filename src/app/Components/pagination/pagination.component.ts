@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -7,25 +7,35 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 })
 export class PaginationComponent {
   @Input() currentPage: number = 1;
-  @Input() pageSize: number = 10;
-  @Input() totalItems: number = 0;
+  @Input() totalPages: number = 1;
   @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
-  @Output() sizeChange: EventEmitter<number> = new EventEmitter<number>();
 
+  constructor() {}
 
-
-  onPageChange(page : number){
+  onPageChange(page: number) {
     this.pageChange.emit(page);
   }
- 
-  calculateTotalPages(){
-    return Math.ceil(this.totalItems / this.pageSize);
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.onPageChange(this.currentPage - 1);
+    }
   }
 
-  getPageNumbers(): number[] {
-    const totalPages = this.calculateTotalPages();
-    return Array.from({length: totalPages}, (_, index) => index + 1);
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.onPageChange(this.currentPage + 1);
+    }
   }
-  
 
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.onPageChange(page);
+    }
+  }
+
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+  }
 }
+

@@ -1,6 +1,6 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, shareReplay, tap, throwError, of } from 'rxjs';
+import { Observable, catchError, shareReplay, throwError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,7 @@ export class ApiService {
   getUser(githubUsername: string) {
     if(!this.cache.has(githubUsername)){
       const user$ = this.httpClient.get(`https://api.github.com/users/${githubUsername}`).pipe(
-        catchError(() => {
-          this.cache.delete(githubUsername);
-          return of(null);
-        }),
+        catchError(this.handleError),
         shareReplay(1)
       );
       this.cache.set(githubUsername, user$);
@@ -27,16 +24,23 @@ export class ApiService {
   }
 
   // implement getRepos method by referring to the documentation. Add proper types for the return type and params 
-  getRepos(githubUsername: string, page: number, perPage: number): Observable<any> {
+  getUserRepos(githubUsername: string, page: number, perPage: number): Observable<any> {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('per_page', perPage.toString());
 
     return this.httpClient.get(`https://api.github.com/users/${githubUsername}/repos`, { params })
       .pipe(
-        catchError((error: any) => {
-          return throwError(() => error);
-        })
+        catchError(this.handleError)
       );
+}
+
+private handleError(error: HttpErrorResponse) {
+  let errorMessage = `Error: ${error.status}`;
+  if (error.error instanceof ErrorEvent) {
+    errorMessage = `Error: ${error.message}`;
+  }
+  console.error(errorMessage);
+  return throwError(() => errorMessage);
 }
 }

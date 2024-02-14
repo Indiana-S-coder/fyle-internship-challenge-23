@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from './services/api.service';
-import { UserDataComponent } from './Components/user-data/user-data.component';
 
 @Component({
   selector: 'app-root',
@@ -10,32 +9,46 @@ import { UserDataComponent } from './Components/user-data/user-data.component';
 export class AppComponent{
   userData: any; 
   repositories: any[] = []
-  // loading: false;
+  loading: boolean = false;
+  error: boolean = false;
+
   constructor(
     private apiService: ApiService,
   ) {}
 
-  // ngOnInit() {
-  //   // this.apiService.getUser(this.username).subscribe(console.log);
-  // }
 
   onSearch(username: string){
-    // this.loading = true;
+    this.loading = true;
     console.log(username)
     this.apiService.getUser(username).subscribe({
-      next: (user) => {this.userData = user, console.log(user)},
-      // complete: () => this.userData = null
-    } 
-    );
-
-    this.apiService.getRepos(username, 1, 100).subscribe(
-      {
-        next: (repos) => {
-          this.repositories = repos
-        }
+      next: (user) => {
+        this.userData = user;
+        console.log(user)
+      },
+      error: () => {
+        this.userData = null;
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
       }
-    )
+    });
 
+
+    this.apiService.getUserRepos(username, 1, 1000).subscribe({
+      next: (repos) => {
+        this.repositories = repos;
+        console.log(repos)
+      },
+      error: () => {
+        this.repositories = [];
+        this.error = true;
+      },
+      complete: () => {
+        this.loading = false;
+      }
+    }
+    );
     
   }
 }
